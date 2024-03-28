@@ -7,7 +7,7 @@ const tasks = {
     task6: { name: "Sacar la basura", completed: true },
     task7: { name: "Planchar Vestido", completed: false },
     task8: { name: "Lavar maleta", completed: true },
-    task9: { name: "Pagar Spotify", completed: false },
+    task9: { name: "Pagar Spotify", completed: true },
     task10: { name: "Sacar cita medica", completed: true },
 };
 
@@ -30,12 +30,14 @@ function renderTasks() {
             completedCount++;
         }
     }
-    taskStatus.textContent = `Tareas completadas: ${completedCount}, Tareas por hacer: ${Object.keys(tasks).length - completedCount}`;
+    const totalTasks = Object.keys(tasks).length;
+    taskStatus.textContent = `Tareas completadas: ${totalTasks - completedCount}, Tareas por hacer: ${completedCount}`;
 }
 
 function toggleTask(key) {
     tasks[key].completed = !tasks[key].completed;
     renderTasks();
+    
 }
 
 renderTasks();
